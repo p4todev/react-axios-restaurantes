@@ -1,13 +1,18 @@
 import React from 'react'
-import {BrowserRouter as Router,Route} from 'react-router-dom'
+import {BrowserRouter as Router,Route,Switch} from 'react-router-dom'
 import Inicio from './pages/Inicio'
 import './App.css'
+import Restaurantes from './pages/Restaurantes'
 
 
-const App = () => {
+function App() {
   return (
     <Router>
-        <Route path="/" component={Inicio} exact/>
+      <Switch>
+      <Route path="/" component={Inicio} exact/>
+      <Route path="/restaurantes/lista" component={Restaurantes} exact/>
+
+      </Switch>
     </Router>
   )
 }

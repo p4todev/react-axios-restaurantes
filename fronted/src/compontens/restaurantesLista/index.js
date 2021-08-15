@@ -1,5 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
+import {
+  ListContainer,
+  ListCard,
+  ListInfo,
+  ListBtn,
+  ListInfoName,
+  ListInfoAdress
+} from './restauranteListaElements'
 
 const api = axios.create({
   baseURL : 'http://localhost:3000/restaurantes',
@@ -25,18 +33,25 @@ const RestauranteLista  = props => {
     
 
     return (
-        <div >
+        <ListContainer className="lista-restaurantes">
           {restaurantes.map((restaurant)=>{
             return(
-            <div>
-               <h2>{restaurant.nombre}</h2>
-                <p>{restaurant.valoracion}</p>
-            </div>
+              <>
+                  <ListCard>
+                    <ListInfo>
+                      <ListInfoName>{restaurant.nombre}</ListInfoName>
+                      <ListInfoAdress>{restaurant.direccion}</ListInfoAdress>
+                    </ListInfo>
+                    <ListBtn>
+                      ver info
+                    </ListBtn>
+                  </ListCard>
+              </>
             );
           }
   
           )}
-        </div>
+        </ListContainer>
     )
 }
 
